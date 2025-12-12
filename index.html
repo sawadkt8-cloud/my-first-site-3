@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qnayds Hacking Academy - Certified Penetration Tester</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Tailwind Config to match React theme -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                    },
+                    colors: {
+                        slate: {
+                            950: '#020617', // Matching the bg-slate-950
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.5s ease-out forwards',
+                        'fade-in': 'fadeIn 0.3s ease-out forwards',
+                        'marquee': 'marquee 25s linear infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        marquee: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles to ensure exact behavior */
+        body {
+            background-color: #020617; /* bg-slate-950 */
+            color: #e2e8f0; /* text-slate-200 */
+        }
+        
+        .grid-background {
+            background-image: linear-gradient(to right, rgba(128, 128, 128, 0.07) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(128, 128, 128, 0.07) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        /* Marquee container */
+        .marquee-container {
+            display: flex;
+            overflow: hidden;
+            user-select: none;
+        }
+        
+        .marquee-content {
+            flex-shrink: 0;
+            display: flex;
+            justify-content: space-around;
+            min-width: 100%;
+            gap: 1rem;
+        }
+    </style>
+</head>
+<body class="selection:bg-yellow-500 selection:text-black font-sans">
+
+    <!-- Global Constants -->
+    <script>
+        const PAYMENT_LINK = "https://courses.qnayds.in/446ba7dd-6cef-40c1-b5c8-2671a07e898c";
+        const INSTAGRAM_LINK = "https://www.instagram.com/qnayds";
+        const SYLLABUS_PDF_LINK = "#"; // Replace with actual URL
+        
+        function navigateToPayment() {
+            window.open(PAYMENT_LINK, '_blank');
+        }
+
+        function navigateToSyllabus() {
+            window.open(SYLLABUS_PDF_LINK, '_blank');
+        }
+    </script>
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2 flex-shrink-0">
+                    <i data-lucide="shield" class="h-6 w-6 md:h-8 md:w-8 text-green-500"></i>
+                    <span class="text-lg md:text-xl font-bold text-white tracking-tighter">
+                        Qnayds<span class="text-green-500">Hacking</span>
+                    </span>
+                </div>
+
+                <!-- Desktop Nav -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#curriculum" class="text-gray-300 hover:text-yellow-400 transition-colors font-medium">Curriculum</a>
+                    <a href="#features" class="text-gray-300 hover:text-yellow-400 transition-colors font-medium">Placement & Jobs</a>
+                    <a href="#bonuses" class="text-gray-300 hover:text-yellow-400 transition-colors font-medium">Bonuses</a>
+                    <button onclick="navigateToPayment()" class="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-black font-extrabold py-2 px-6 rounded-full transition-all transform hover:scale-105 shadow-[0_0_15px_rgba(234,179,8,0.6)] animate-pulse flex items-center">
+                        Book Demo @ <span class="line-through text-black/60 mx-1 text-sm">₹99</span> ₹9/-
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button (Hamburger - actually a Join button in original code) -->
+                <div class="md:hidden flex items-center">
+                    <button onclick="navigateToPayment()" class="bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-extrabold py-1.5 px-4 rounded-full text-sm mr-2 animate-pulse shadow-lg flex items-center">
+                        Join <span class="line-through text-black/60 mx-1 text-xs">₹99</span> ₹9/-
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <div class="relative pt-28 pb-16 lg:pt-40 lg:pb-28 overflow-hidden bg-slate-950">
+        <!-- Background Grid Effect -->
+        <div class="absolute inset-0 grid-background"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
+            
+            <!-- Badge -->
+            <div class="inline-flex items-center px-4 py-2 rounded-full border border-red-500/30 bg-red-500/10 text-red-400 text-xs md:text-sm font-semibold mb-8 animate-fade-in-up">
+                <span class="flex h-2 w-2 relative mr-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+                </span>
+                URGENT: Batch 3 Admissions Closing Soon
+            </div>
+
+            <!-- Headline -->
+            <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-6 max-w-5xl leading-tight">
+                Don't Just Learn Hacking. <br />
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">
+                   Hunt Your First Real Bug.
+                </span>
+            </h1>
+
+            <p class="mt-6 text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8 px-2 leading-relaxed">
+                Join <strong>Qnayds Hacking Academy's</strong> 2-Month <span class="text-yellow-400 font-bold">Qnayds Certified Penetration Tester (QCPT)</span> program. 
+                <span class="text-white font-bold"> 100% Placement Support</span>, Live Targets, and <span class="text-white font-bold">Free CompTIA Security+</span> Training.
+            </p>
+
+            <!-- Urgency Indicator -->
+            <div class="flex items-center justify-center space-x-2 mb-8 bg-slate-900/80 py-2 px-4 rounded-lg border border-slate-700 inline-block backdrop-blur-sm">
+                <i data-lucide="users" class="h-5 w-5 text-yellow-500"></i>
+                <span class="text-yellow-500 font-mono text-sm md:text-base font-bold">Batch 2 Running Full • Batch 3 Filling Fast</span>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 w-full justify-center px-4 relative">
+                <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-red-600 text-white text-[10px] px-3 py-1 rounded-full font-bold animate-bounce shadow-md uppercase tracking-wide border border-red-400 whitespace-nowrap z-20">
+                    <i data-lucide="clock" class="h-3 w-3 inline mr-1"></i> Offer Ends Soon
+                </div>
+                <button onclick="navigateToPayment()" class="group relative inline-flex items-center justify-center px-8 py-5 text-xl font-extrabold text-black transition-all duration-200 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full focus:outline-none hover:from-yellow-300 hover:to-orange-400 w-full sm:w-auto shadow-[0_0_40px_rgba(234,179,8,0.5)] animate-pulse border-2 border-yellow-300">
+                    BOOK DEMO @ <span class="line-through text-black/60 mx-2 text-lg">₹99</span> ₹9/-
+                    <i data-lucide="arrow-right" class="ml-2 h-6 w-6 group-hover:translate-x-1 transition-transform"></i>
+                </button>
+                
+                <button onclick="navigateToSyllabus()" class="inline-flex items-center justify-center px-8 py-5 text-lg font-bold text-white transition-all duration-200 bg-slate-800 border border-slate-700 rounded-full hover:bg-slate-700 focus:outline-none w-full sm:w-auto">
+                    View Syllabus
+                </button>
+            </div>
+
+            <p class="mt-6 text-sm text-gray-500 flex items-center justify-center">
+                <span class="bg-slate-800 px-2 py-1 rounded text-white font-bold flex items-center mr-2 border border-slate-700">
+                    <span class="text-blue-500 mr-1">G</span> 4.6
+                    <i data-lucide="star" class="h-3 w-3 text-yellow-400 ml-1 fill-current"></i>
+                </span>
+                Rated 4.6/5 on Google Reviews
+            </p>
+        </div>
+    </div>
+
+    <!-- Target Audience -->
+    <section class="py-16 bg-slate-900 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-center text-white font-bold text-3xl mb-10">Who Is This Course Ideal For?</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Audiences -->
+                <div class="bg-slate-800 border border-slate-700 p-6 rounded-2xl flex flex-col items-center text-center hover:border-yellow-500 transition-colors shadow-lg hover:shadow-yellow-500/10 group">
+                    <div class="bg-slate-900 p-4 rounded-full mb-4 shadow-inner group-hover:scale-110 transition-transform">
+                        <i data-lucide="refresh-ccw" class="h-8 w-8 text-blue-400"></i>
+                    </div>
+                    <div class="font-bold text-white text-lg mb-2">Career Switchers</div>
+                    <div class="text-sm text-gray-400 leading-snug">Stuck in a boring job? Move to high-paying IT Security.</div>
+                </div>
+
+                <div class="bg-slate-800 border border-slate-700 p-6 rounded-2xl flex flex-col items-center text-center hover:border-yellow-500 transition-colors shadow-lg hover:shadow-yellow-500/10 group">
+                    <div class="bg-slate-900 p-4 rounded-full mb-4 shadow-inner group-hover:scale-110 transition-transform">
+                        <i data-lucide="briefcase" class="h-8 w-8 text-green-400"></i>
+                    </div>
+                    <div class="font-bold text-white text-lg mb-2">Job Seekers</div>
+                    <div class="text-sm text-gray-400 leading-snug">Get the 'Certified' tag recruiters are looking for.</div>
+                </div>
+
+                <div class="bg-slate-800 border border-slate-700 p-6 rounded-2xl flex flex-col items-center text-center hover:border-yellow-500 transition-colors shadow-lg hover:shadow-yellow-500/10 group">
+                    <div class="bg-slate-900 p-4 rounded-full mb-4 shadow-inner group-hover:scale-110 transition-transform">
+                        <i data-lucide="graduation-cap" class="h-8 w-8 text-yellow-400"></i>
+                    </div>
+                    <div class="font-bold text-white text-lg mb-2">Students (After +2)</div>
+                    <div class="text-sm text-gray-400 leading-snug">Skip the degree debt. Start earning early.</div>
+                </div>
+
+                <div class="bg-slate-800 border border-slate-700 p-6 rounded-2xl flex flex-col items-center text-center hover:border-yellow-500 transition-colors shadow-lg hover:shadow-yellow-500/10 group">
+                    <div class="bg-slate-900 p-4 rounded-full mb-4 shadow-inner group-hover:scale-110 transition-transform">
+                        <i data-lucide="flame" class="h-8 w-8 text-red-400"></i>
+                    </div>
+                    <div class="font-bold text-white text-lg mb-2">Tech Enthusiasts</div>
+                    <div class="text-sm text-gray-400 leading-snug">Turn your curiosity into a professional skillset.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Job Opportunities Section -->
+    <section class="py-16 bg-slate-950 border-b border-slate-800 relative overflow-hidden">
+        <!-- Decoration -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-green-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-6">
+                    Unlock High-Paying <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600">Job Roles</span>
+                </h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    The cybersecurity industry is facing a massive skills gap. Companies are paying top dollar for certified professionals.
+                </p>
+            </div>
+    
+            <!-- Market Stats -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div class="bg-slate-900/80 border border-slate-800 p-6 rounded-2xl flex items-center space-x-4">
+                    <div class="p-3 bg-red-500/10 rounded-lg">
+                        <i data-lucide="trending-up" class="h-8 w-8 text-red-500"></i>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-white">3.5 Million</div>
+                        <div class="text-sm text-gray-400">Unfilled Cyber Jobs Globally</div>
+                    </div>
+                </div>
+                <div class="bg-slate-900/80 border border-slate-800 p-6 rounded-2xl flex items-center space-x-4">
+                    <div class="p-3 bg-green-500/10 rounded-lg">
+                        <i data-lucide="dollar-sign" class="h-8 w-8 text-green-500"></i>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-white">₹5 LPA - ₹12 LPA</div>
+                        <div class="text-sm text-gray-400">Avg. Starting Salary Range</div>
+                    </div>
+                </div>
+                <div class="bg-slate-900/80 border border-slate-800 p-6 rounded-2xl flex items-center space-x-4">
+                    <div class="p-3 bg-blue-500/10 rounded-lg">
+                        <i data-lucide="building" class="h-8 w-8 text-blue-500"></i>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-white">Top MNCs</div>
+                        <div class="text-sm text-gray-400">Hiring Aggressively Now</div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Job Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Job 1 -->
+                <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700 hover:border-yellow-500/50 transition-colors group hover:-translate-y-1 duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 group-hover:border-slate-600 transition-colors">
+                            <i data-lucide="shield" class="h-6 w-6 text-yellow-500"></i>
+                        </div>
+                        <span class="bg-green-500/10 text-green-400 text-xs font-bold px-2 py-1 rounded-full">Hot Role</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-1">Jr. Penetration Tester</h3>
+                    <p class="text-yellow-400 font-mono text-sm font-bold mb-3">₹4L - ₹8L / Year</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">Simulate attacks to find security weaknesses in systems.</p>
+                </div>
+                
+                <!-- Job 2 -->
+                <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700 hover:border-yellow-500/50 transition-colors group hover:-translate-y-1 duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 group-hover:border-slate-600 transition-colors">
+                            <i data-lucide="search" class="h-6 w-6 text-blue-500"></i>
+                        </div>
+                        <span class="bg-green-500/10 text-green-400 text-xs font-bold px-2 py-1 rounded-full">Hot Role</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-1">SOC Analyst</h3>
+                    <p class="text-yellow-400 font-mono text-sm font-bold mb-3">₹5L - ₹9L / Year</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">Monitor networks for security breaches and investigate alerts.</p>
+                </div>
+
+                <!-- Job 3 -->
+                <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700 hover:border-yellow-500/50 transition-colors group hover:-translate-y-1 duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 group-hover:border-slate-600 transition-colors">
+                            <i data-lucide="target" class="h-6 w-6 text-red-500"></i>
+                        </div>
+                        <span class="bg-green-500/10 text-green-400 text-xs font-bold px-2 py-1 rounded-full">Hot Role</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-1">Bug Bounty Hunter</h3>
+                    <p class="text-yellow-400 font-mono text-sm font-bold mb-3">No Limit (Freelance)</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">Earn cash rewards per bug found from companies like Google/Meta.</p>
+                </div>
+
+                <!-- Job 4 -->
+                <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700 hover:border-yellow-500/50 transition-colors group hover:-translate-y-1 duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 group-hover:border-slate-600 transition-colors">
+                            <i data-lucide="briefcase" class="h-6 w-6 text-purple-500"></i>
+                        </div>
+                        <span class="bg-green-500/10 text-green-400 text-xs font-bold px-2 py-1 rounded-full">Hot Role</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-1">Security Consultant</h3>
+                    <p class="text-yellow-400 font-mono text-sm font-bold mb-3">₹10L+ / Year</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">Advise organizations on how to secure their digital assets.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Syllabus -->
+    <section id="curriculum" class="py-20 bg-slate-950 border-b border-slate-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4">Course <span class="text-yellow-400">Syllabus</span></h2>
+                <p class="text-gray-400">A Premium Practical Cybersecurity Training Experience designed to take you from beginner to job-ready pentester.</p>
+            </div>
+
+            <div class="space-y-4" id="syllabus-container">
+                <!-- Modules generated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Features -->
+    <section id="features" class="py-20 bg-slate-950 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <h2 class="text-3xl md:text-5xl font-extrabold text-center text-white mb-16">
+                Why This Is The <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">Last Course</span> You'll Need
+            </h2>
+
+            <div class="space-y-8">
+                <!-- Feature 1 -->
+                <div class="flex flex-col md:flex-row items-center bg-slate-900/50 border border-slate-800 p-8 rounded-3xl hover:border-green-500/50 transition-colors group">
+                    <div class="md:w-1/3 mb-6 md:mb-0 flex justify-center">
+                        <div class="w-20 h-20 bg-green-500/10 rounded-full flex items-center justify-center text-green-500 text-3xl font-bold border border-green-500/30 shadow-[0_0_20px_rgba(34,197,94,0.2)] group-hover:scale-110 transition-transform">
+                            <i data-lucide="briefcase" class="h-10 w-10"></i>
+                        </div>
+                    </div>
+                    <div class="md:w-2/3 md:pl-8">
+                        <h3 class="text-2xl font-bold text-white mb-3 text-center md:text-left">100% Placement Support</h3>
+                        <p class="text-gray-400 text-lg leading-relaxed text-center md:text-left">
+                            We don't just teach; we place. Get dedicated help with <span class="text-white font-bold">resume building, LinkedIn optimization</span>, and mock interviews to crack high-paying security jobs.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="flex flex-col md:flex-row items-center bg-slate-900/50 border border-slate-800 p-8 rounded-3xl hover:border-blue-500/50 transition-colors group">
+                    <div class="md:w-1/3 mb-6 md:mb-0 flex justify-center">
+                        <div class="w-20 h-20 bg-blue-500/10 rounded-full flex items-center justify-center text-blue-500 text-3xl font-bold border border-blue-500/30 shadow-[0_0_20px_rgba(59,130,246,0.2)] group-hover:scale-110 transition-transform">
+                            <i data-lucide="award" class="h-10 w-10"></i>
+                        </div>
+                    </div>
+                    <div class="md:w-2/3 md:pl-8">
+                        <h3 class="text-2xl font-bold text-white mb-3 text-center md:text-left">Free CompTIA Security+ Training</h3>
+                        <p class="text-gray-400 text-lg leading-relaxed text-center md:text-left">
+                            Stand out to recruiters. We include complete training for the globally recognized <span class="text-white font-bold">CompTIA Security+</span> certification exam at no extra cost.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="flex flex-col md:flex-row items-center bg-slate-900/50 border border-slate-800 p-8 rounded-3xl hover:border-yellow-500/50 transition-colors group">
+                    <div class="md:w-1/3 mb-6 md:mb-0 flex justify-center">
+                        <div class="w-20 h-20 bg-yellow-500/10 rounded-full flex items-center justify-center text-yellow-500 text-3xl font-bold border border-yellow-500/30 shadow-[0_0_20px_rgba(234,179,8,0.2)] group-hover:scale-110 transition-transform">
+                            <i data-lucide="target" class="h-10 w-10"></i>
+                        </div>
+                    </div>
+                    <div class="md:w-2/3 md:pl-8">
+                        <h3 class="text-2xl font-bold text-white mb-3 text-center md:text-left">Hunt Real Bugs (Guaranteed)</h3>
+                        <p class="text-gray-400 text-lg leading-relaxed text-center md:text-left">
+                            By the end of the course, you WILL hunt and report a live bug on a real-world application. <span class="text-white font-bold">Add a real vulnerability report to your resume</span> before you even graduate.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="flex flex-col md:flex-row items-center bg-slate-900/50 border border-slate-800 p-8 rounded-3xl hover:border-purple-500/50 transition-colors group">
+                    <div class="md:w-1/3 mb-6 md:mb-0 flex justify-center">
+                        <div class="w-20 h-20 bg-purple-500/10 rounded-full flex items-center justify-center text-purple-500 text-3xl font-bold border border-purple-500/30 shadow-[0_0_20px_rgba(168,85,247,0.2)] group-hover:scale-110 transition-transform">
+                            <i data-lucide="video" class="h-10 w-10"></i>
+                        </div>
+                    </div>
+                    <div class="md:w-2/3 md:pl-8">
+                        <h3 class="text-2xl font-bold text-white mb-3 text-center md:text-left">QCPT Certification & Class Recordings</h3>
+                        <p class="text-gray-400 text-lg leading-relaxed text-center md:text-left">
+                            Become job-ready with our prestigious <span class="text-white font-bold">Qnayds Certified Penetration Tester (QCPT)</span> credential. Plus, enjoy <span class="text-white font-bold">Lifetime Access to Live Class Recordings</span> to learn at your own pace.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trainer Profile -->
+    <section class="py-20 bg-slate-900 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+                <!-- Decorative background -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-yellow-500/10 rounded-full blur-3xl -mr-32 -mt-32"></div>
+                
+                <div class="flex flex-col md:flex-row items-center gap-12 relative z-10">
+                    <!-- Image/Avatar -->
+                    <div class="w-full md:w-1/3 flex justify-center">
+                        <div class="w-48 h-48 md:w-64 md:h-64 bg-gradient-to-b from-yellow-400 to-orange-600 rounded-full p-1 shadow-[0_0_40px_rgba(234,179,8,0.3)]">
+                            <div class="w-full h-full bg-slate-900 rounded-full flex items-center justify-center overflow-hidden relative">
+                                <i data-lucide="user-check" class="h-24 w-24 text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="w-full md:w-2/3 text-center md:text-left">
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-2">Meet Your Mentor</h2>
+                        <h3 class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 mb-6">Vasil</h3>
+                        
+                        <p class="text-gray-300 text-lg mb-8 leading-relaxed">
+                            With a strong background and practical expertise, Vasil brings high-quality training, real-world insights, and a deeper understanding of modern cybersecurity to the classroom.
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
+                            <div class="flex items-center space-x-3 bg-slate-800/50 p-3 rounded-lg border border-slate-700/50 hover:border-yellow-500/30 transition-colors group">
+                                <i data-lucide="check-circle" class="h-5 w-5 text-green-400 flex-shrink-0 group-hover:scale-110 transition-transform"></i>
+                                <span class="text-gray-200 text-sm font-medium">CompTIA Security+ Certified</span>
+                            </div>
+                            <div class="flex items-center space-x-3 bg-slate-800/50 p-3 rounded-lg border border-slate-700/50 hover:border-yellow-500/30 transition-colors group">
+                                <i data-lucide="check-circle" class="h-5 w-5 text-green-400 flex-shrink-0 group-hover:scale-110 transition-transform"></i>
+                                <span class="text-gray-200 text-sm font-medium">Certified Ethical Hacker (CEH)</span>
+                            </div>
+                            <div class="flex items-center space-x-3 bg-slate-800/50 p-3 rounded-lg border border-slate-700/50 hover:border-yellow-500/30 transition-colors group">
+                                <i data-lucide="check-circle" class="h-5 w-5 text-green-400 flex-shrink-0 group-hover:scale-110 transition-transform"></i>
+                                <span class="text-gray-200 text-sm font-medium">Google Cybersecurity Professional</span>
+                            </div>
+                            <div class="flex items-center space-x-3 bg-slate-800/50 p-3 rounded-lg border border-slate-700/50 hover:border-yellow-500/30 transition-colors group">
+                                <i data-lucide="check-circle" class="h-5 w-5 text-green-400 flex-shrink-0 group-hover:scale-110 transition-transform"></i>
+                                <span class="text-gray-200 text-sm font-medium">Microsoft Cybersecurity Analyst</span>
+                            </div>
+                            <div class="flex items-center space-x-3 bg-slate-800/50 p-3 rounded-lg border border-slate-700/50 hover:border-yellow-500/30 transition-colors group">
+                                <i data-lucide="check-circle" class="h-5 w-5 text-green-400 flex-shrink-0 group-hover:scale-110 transition-transform"></i>
+                                <span class="text-gray-200 text-sm font-medium">Univ. of Maryland Certified (Cybersecurity)</span>
+                            </div>
+                            <div class="flex items-center space-x-3 bg-slate-800/50 p-3 rounded-lg border border-slate-700/50 hover:border-yellow-500/30 transition-colors group">
+                                <i data-lucide="check-circle" class="h-5 w-5 text-green-400 flex-shrink-0 group-hover:scale-110 transition-transform"></i>
+                                <span class="text-gray-200 text-sm font-medium">AWAST – Advanced Web App Security</span>
+                            </div>
+                            <div class="flex items-center space-x-3 bg-slate-800/50 p-3 rounded-lg border border-slate-700/50 hover:border-yellow-500/30 transition-colors group">
+                                <i data-lucide="check-circle" class="h-5 w-5 text-green-400 flex-shrink-0 group-hover:scale-110 transition-transform"></i>
+                                <span class="text-gray-200 text-sm font-medium">Bug Bounty Researcher (12 CVEs)</span>
+                            </div>
+                            <div class="flex items-center space-x-3 bg-slate-800/50 p-3 rounded-lg border border-slate-700/50 hover:border-yellow-500/30 transition-colors group">
+                                <i data-lucide="check-circle" class="h-5 w-5 text-green-400 flex-shrink-0 group-hover:scale-110 transition-transform"></i>
+                                <span class="text-gray-200 text-sm font-medium">Python Full-Stack Developer</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bonuses -->
+    <section id="bonuses" class="py-20 bg-slate-900 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-center text-white mb-4">
+                Exclusive Bonuses For Demo Attendees
+            </h2>
+            <p class="text-xl text-center text-gray-400 mb-12">
+                Unlock <span class="text-green-400 font-bold">₹15,000+ Worth of Bonuses</span> For FREE When You Join the Live Demo!
+            </p>
+
+            <!-- Highlighted Bundle -->
+            <div class="bg-gradient-to-br from-indigo-900/50 to-slate-900 border border-indigo-500/50 rounded-3xl p-8 mb-10 relative overflow-hidden shadow-2xl">
+                <div class="absolute top-0 right-0 bg-yellow-500 text-black font-bold text-sm px-4 py-1 rounded-bl-xl">MEGA VALUE</div>
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="bg-indigo-500/20 p-6 rounded-full border border-indigo-500/30 flex-shrink-0">
+                        <i data-lucide="video" class="h-16 w-16 text-indigo-400"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-4">Bonus #1: The "5-Course Mastery" Recorded Bundle</h3>
+                        <p class="text-gray-300 mb-6 text-lg">Get lifetime access to 5 additional premium recorded courses to skyrocket your career skills:</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <div class="flex items-center bg-slate-800/80 px-4 py-3 rounded-lg border border-slate-700">
+                                <i data-lucide="check-circle" class="h-5 w-5 text-green-400 mr-2 flex-shrink-0"></i>
+                                <span class="text-white font-medium">Excel Using AI</span>
+                            </div>
+                            <div class="flex items-center bg-slate-800/80 px-4 py-3 rounded-lg border border-slate-700">
+                                <i data-lucide="check-circle" class="h-5 w-5 text-green-400 mr-2 flex-shrink-0"></i>
+                                <span class="text-white font-medium">AI Integrated Graphic Design</span>
+                            </div>
+                            <div class="flex items-center bg-slate-800/80 px-4 py-3 rounded-lg border border-slate-700">
+                                <i data-lucide="check-circle" class="h-5 w-5 text-green-400 mr-2 flex-shrink-0"></i>
+                                <span class="text-white font-medium">Python with AI</span>
+                            </div>
+                            <div class="flex items-center bg-slate-800/80 px-4 py-3 rounded-lg border border-slate-700">
+                                <i data-lucide="check-circle" class="h-5 w-5 text-green-400 mr-2 flex-shrink-0"></i>
+                                <span class="text-white font-medium">Stock Market Basics</span>
+                            </div>
+                            <div class="flex items-center bg-slate-800/80 px-4 py-3 rounded-lg border border-slate-700">
+                                <i data-lucide="check-circle" class="h-5 w-5 text-green-400 mr-2 flex-shrink-0"></i>
+                                <span class="text-white font-medium">Ethical Hacking Essentials</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other Bonuses -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Cert -->
+                <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 relative overflow-hidden group hover:-translate-y-2 transition-transform">
+                    <div class="absolute top-0 right-0 bg-green-500 text-black font-bold text-xs px-2 py-1">GUARANTEED</div>
+                    <i data-lucide="award" class="h-10 w-10 text-yellow-400 mb-4"></i>
+                    <h3 class="text-lg font-bold text-white mb-2">Certificate of Participation</h3>
+                    <p class="text-gray-400 text-sm">Official certificate from Qnayds Hacking Academy to showcase your commitment on LinkedIn.</p>
+                </div>
+                <!-- AI -->
+                <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 relative overflow-hidden group hover:-translate-y-2 transition-transform shadow-[0_0_15px_rgba(236,72,153,0.1)] hover:shadow-[0_0_20px_rgba(236,72,153,0.2)]">
+                    <div class="absolute top-0 right-0 bg-gradient-to-r from-pink-500 to-purple-500 text-white font-bold text-xs px-2 py-1">NEW</div>
+                    <i data-lucide="bot" class="h-10 w-10 text-pink-400 mb-4"></i>
+                    <h3 class="text-lg font-bold text-white mb-2">AI Productivity Blueprint</h3>
+                    <p class="text-gray-400 text-sm">Automate daily life activities & tasks using AI tools. A complete productivity guide.</p>
+                </div>
+                <!-- Cheat Sheet -->
+                <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 relative overflow-hidden group hover:-translate-y-2 transition-transform">
+                    <i data-lucide="book-open" class="h-10 w-10 text-blue-400 mb-4"></i>
+                    <h3 class="text-lg font-bold text-white mb-2">Burp Suite Cheat Sheet</h3>
+                    <p class="text-gray-400 text-sm">The ultimate command reference guide to speed up your hacking workflow.</p>
+                </div>
+                <!-- Roadmap -->
+                <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 relative overflow-hidden group hover:-translate-y-2 transition-transform">
+                    <i data-lucide="map" class="h-10 w-10 text-green-400 mb-4"></i>
+                    <h3 class="text-lg font-bold text-white mb-2">Bug Hunter's Roadmap</h3>
+                    <p class="text-gray-400 text-sm">Step-by-step PDF guide to go from 'Noob' to your first paid bounty.</p>
+                </div>
+            </div>
+
+            <div class="mt-8 text-center bg-yellow-900/20 border border-yellow-600/30 p-4 rounded-xl max-w-2xl mx-auto">
+                <p class="text-yellow-200 text-sm font-semibold flex items-center justify-center">
+                    <i data-lucide="alert-triangle" class="h-4 w-4 mr-2"></i>
+                    NOTE: All bonuses are exclusive to Demo Attendees ONLY.
+                </p>
+            </div>
+
+            <div class="mt-12 text-center">
+                <button onclick="navigateToPayment()" class="inline-flex items-center justify-center px-8 py-4 text-xl font-bold text-black bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full hover:from-yellow-300 hover:to-orange-400 transition-all shadow-lg animate-pulse">
+                    CLAIM ALL BONUSES @ <span class="line-through text-black/60 mx-1 text-base">₹99</span> ₹9/-
+                    <i data-lucide="arrow-right" class="ml-2 h-6 w-6"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="bg-gradient-to-r from-yellow-400 to-orange-500 py-3 md:py-4 overflow-hidden whitespace-nowrap">
+        <div class="marquee-container">
+             <!-- Content duplicated for seamless loop -->
+            <div class="marquee-content animate-marquee">
+                <span class="text-black text-sm md:text-base font-extrabold uppercase tracking-wider">⚡ Learn Network Scanning</span>
+                <span class="text-black text-sm md:text-base font-extrabold uppercase tracking-wider">⚡ SQL Injection</span>
+                <span class="text-black text-sm md:text-base font-extrabold uppercase tracking-wider">⚡ Cross-Site Scripting</span>
+                <span class="text-black text-sm md:text-base font-extrabold uppercase tracking-wider">⚡ Metasploit Framework</span>
+                <span class="text-black text-sm md:text-base font-extrabold uppercase tracking-wider">⚡ Android Pentesting</span>
+                <span class="text-black text-sm md:text-base font-extrabold uppercase tracking-wider">⚡ Report Writing</span>
+                <!-- Duplicate for loop -->
+                 <span class="text-black text-sm md:text-base font-extrabold uppercase tracking-wider">⚡ Learn Network Scanning</span>
+                <span class="text-black text-sm md:text-base font-extrabold uppercase tracking-wider">⚡ SQL Injection</span>
+                <span class="text-black text-sm md:text-base font-extrabold uppercase tracking-wider">⚡ Cross-Site Scripting</span>
+                <span class="text-black text-sm md:text-base font-extrabold uppercase tracking-wider">⚡ Metasploit Framework</span>
+                <span class="text-black text-sm md:text-base font-extrabold uppercase tracking-wider">⚡ Android Pentesting</span>
+                <span class="text-black text-sm md:text-base font-extrabold uppercase tracking-wider">⚡ Report Writing</span>
+                 <!-- Triplicate for safety on wide screens -->
+                 <span class="text-black text-sm md:text-base font-extrabold uppercase tracking-wider">⚡ Learn Network Scanning</span>
+                 <span class="text-black text-sm md:text-base font-extrabold uppercase tracking-wider">⚡ SQL Injection</span>
+                 <span class="text-black text-sm md:text-base font-extrabold uppercase tracking-wider">⚡ Cross-Site Scripting</span>
+                 <span class="text-black text-sm md:text-base font-extrabold uppercase tracking-wider">⚡ Metasploit Framework</span>
+                 <span class="text-black text-sm md:text-base font-extrabold uppercase tracking-wider">⚡ Android Pentesting</span>
+                 <span class="text-black text-sm md:text-base font-extrabold uppercase tracking-wider">⚡ Report Writing</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Social Proof (Videos) -->
+    <section id="reviews" class="py-16 md:py-20 bg-slate-950 border-y border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-6">Student Success Spotlight 🌟</h2>
+                <p class="text-xl text-gray-400">Real stories from students who started from scratch with <span class="text-yellow-400 font-bold">Qnayds</span></p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16" id="video-grid">
+                <!-- Video Cards Generated by JS -->
+            </div>
+
+            <!-- Text Reviews -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 opacity-70 hover:opacity-100 transition-opacity">
+                <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800">
+                    <div class="flex text-yellow-400 mb-2">
+                        <i data-lucide="star" class="h-3 w-3 fill-current"></i><i data-lucide="star" class="h-3 w-3 fill-current"></i><i data-lucide="star" class="h-3 w-3 fill-current"></i><i data-lucide="star" class="h-3 w-3 fill-current"></i><i data-lucide="star" class="h-3 w-3 fill-current"></i>
+                    </div>
+                    <p class="text-gray-400 text-xs">"The AI blueprint bonus is a game changer for my daily tasks!"</p>
+                    <p class="text-gray-500 text-xs font-bold mt-2">- Priya S.</p>
+                </div>
+                <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800">
+                    <div class="flex text-yellow-400 mb-2">
+                         <i data-lucide="star" class="h-3 w-3 fill-current"></i><i data-lucide="star" class="h-3 w-3 fill-current"></i><i data-lucide="star" class="h-3 w-3 fill-current"></i><i data-lucide="star" class="h-3 w-3 fill-current"></i><i data-lucide="star" class="h-3 w-3 fill-current"></i>
+                    </div>
+                    <p class="text-gray-400 text-xs">"Best ₹9 I ever spent. The live bug hunt was insane."</p>
+                    <p class="text-gray-500 text-xs font-bold mt-2">- Rahul M.</p>
+                </div>
+                <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800">
+                    <div class="flex text-yellow-400 mb-2">
+                         <i data-lucide="star" class="h-3 w-3 fill-current"></i><i data-lucide="star" class="h-3 w-3 fill-current"></i><i data-lucide="star" class="h-3 w-3 fill-current"></i><i data-lucide="star" class="h-3 w-3 fill-current"></i><i data-lucide="star" class="h-3 w-3 fill-current"></i>
+                    </div>
+                    <p class="text-gray-400 text-xs">"Finally understanding how to use Burp Suite properly. Thanks Qnayds."</p>
+                    <p class="text-gray-500 text-xs font-bold mt-2">- Arjun K.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offer Section -->
+    <section id="offer" class="py-16 md:py-24 bg-gradient-to-b from-slate-900 to-black relative">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
+        
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
+            <div class="bg-slate-900/90 backdrop-blur-xl border-2 border-yellow-500/50 rounded-3xl p-6 md:p-12 shadow-[0_0_60px_rgba(234,179,8,0.15)] ring-1 ring-yellow-500/30">
+                
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 border-b border-slate-700 pb-8">
+                    <div class="mb-4 md:mb-0">
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-white">Cybersecurity Kickstarter</h2>
+                        <p class="text-gray-400 mt-2 text-base md:text-lg">Live 90-Min Practical Demo + Roadmap</p>
+                    </div>
+                    <div class="text-left md:text-right w-full md:w-auto flex justify-between md:block items-center">
+                        <span class="text-gray-500 line-through text-lg block font-medium">₹99</span>
+                        <div class="text-6xl font-extrabold text-green-400 drop-shadow-lg">₹9<span class="text-2xl text-white">/-</span></div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-10">
+                    <div class="space-y-4">
+                        <h3 class="text-white font-bold text-lg mb-2 uppercase tracking-wide">Demo Includes:</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <i data-lucide="check-circle" class="h-6 w-6 text-yellow-500 mr-3 flex-shrink-0"></i>
+                                <span class="text-base md:text-lg text-gray-300 font-medium">Live SQL Injection Attack Demo</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="check-circle" class="h-6 w-6 text-yellow-500 mr-3 flex-shrink-0"></i>
+                                <span class="text-base md:text-lg text-gray-300 font-medium">Burp Suite Setup Guide</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="check-circle" class="h-6 w-6 text-yellow-500 mr-3 flex-shrink-0"></i>
+                                <span class="text-base md:text-lg text-gray-300 font-medium">Bug Bounty Career Roadmap</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="check-circle" class="h-6 w-6 text-yellow-500 mr-3 flex-shrink-0"></i>
+                                <span class="text-base md:text-lg text-gray-300 font-medium">Q&A with Senior Pentester</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="check-circle" class="h-6 w-6 text-yellow-500 mr-3 flex-shrink-0"></i>
+                                <span class="text-base md:text-lg text-gray-300 font-medium">Certificate of Participation</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="mt-8 bg-yellow-900/20 border border-yellow-600/50 p-4 rounded-xl flex items-start">
+                            <i data-lucide="laptop" class="h-6 w-6 text-yellow-500 mr-3 flex-shrink-0"></i>
+                            <div>
+                                <h4 class="text-yellow-500 font-bold text-sm uppercase">Mandatory Requirement</h4>
+                                <p class="text-yellow-100/80 text-xs mt-1 leading-relaxed">
+                                    To participate in hands-on labs, a personal Laptop/PC is mandatory. (Windows/Mac/Linux)
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-slate-800 rounded-2xl p-6 flex flex-col items-center justify-center border border-slate-700 shadow-inner">
+                        <div class="flex items-center text-red-400 mb-4 bg-red-500/10 px-3 py-1 rounded-full">
+                            <i data-lucide="clock" class="h-4 w-4 mr-2 animate-pulse"></i>
+                            <span class="text-xs font-bold uppercase tracking-widest">Offer Ends In</span>
+                        </div>
+                        
+                        <!-- Countdown Timer -->
+                        <div class="flex space-x-2 md:space-x-4 text-center justify-center">
+                            <div class="bg-slate-800 rounded-lg p-2 md:p-3 min-w-[60px] md:min-w-[70px] border border-slate-700">
+                                <span class="block text-xl md:text-2xl font-mono font-bold text-white">00</span>
+                                <span class="text-[10px] md:text-xs text-gray-400 uppercase font-bold">Hours</span>
+                            </div>
+                            <div class="bg-slate-800 rounded-lg p-2 md:p-3 min-w-[60px] md:min-w-[70px] border border-slate-700">
+                                <span id="timer-mins" class="block text-xl md:text-2xl font-mono font-bold text-green-400">14</span>
+                                <span class="text-[10px] md:text-xs text-gray-400 uppercase font-bold">Mins</span>
+                            </div>
+                            <div class="bg-slate-800 rounded-lg p-2 md:p-3 min-w-[60px] md:min-w-[70px] border border-slate-700">
+                                <span id="timer-secs" class="block text-xl md:text-2xl font-mono font-bold text-red-500 animate-pulse">59</span>
+                                <span class="text-[10px] md:text-xs text-gray-400 uppercase font-bold">Secs</span>
+                            </div>
+                        </div>
+
+                        <p class="mt-4 text-sm text-red-400 font-bold animate-pulse">Only 7 spots remaining</p>
+                    </div>
+                </div>
+
+                <button onclick="navigateToPayment()" class="w-full bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-black text-xl md:text-2xl font-extrabold py-6 rounded-2xl shadow-[0_0_30px_rgba(234,179,8,0.4)] transform transition hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center group animate-pulse border-b-4 border-orange-600">
+                    <i data-lucide="lock" class="h-6 w-6 mr-3"></i>
+                    UNLOCK MY SPOT NOW
+                    <i data-lucide="arrow-right" class="h-6 w-6 ml-3 group-hover:translate-x-1 transition-transform"></i>
+                </button>
+                
+                <p class="text-center text-gray-500 text-xs md:text-sm mt-6 font-medium">
+                    🔒 256-Bit SSL Encrypted Payment • 100% Money-back Guarantee
+                </p>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-16 md:py-20 bg-slate-950">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6">
+            <h2 class="text-2xl md:text-3xl font-extrabold text-white text-center mb-12">Frequently Asked Questions</h2>
+            <div class="space-y-4 mb-12" id="faq-container">
+                <!-- FAQs generated by JS -->
+            </div>
+            
+            <div class="text-center">
+                <p class="text-gray-400 mb-4 font-medium">Still have questions? Join the demo and ask us live.</p>
+                 <button onclick="navigateToPayment()" class="bg-slate-800 hover:bg-slate-700 text-yellow-500 border border-yellow-500/50 font-bold py-3 px-8 rounded-full transition-all animate-pulse">
+                  Reserve Seat for ₹9
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex flex-col items-center md:items-start space-y-4 mb-8 md:mb-0">
+                <div class="flex items-center space-x-2">
+                    <i data-lucide="shield" class="h-6 w-6 text-green-600"></i>
+                    <span class="text-lg font-bold text-gray-200">Qnayds Hacking Academy</span>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <a href="https://www.instagram.com/qnayds" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-pink-500 transition-colors flex items-center group">
+                        <i data-lucide="instagram" class="h-5 w-5 mr-2 group-hover:scale-110 transition-transform"></i>
+                        <span class="text-sm font-medium">Follow us on Instagram</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="text-gray-500 text-sm text-center md:text-right">
+                <p>© 2024 Qnayds Hacking Academy. All rights reserved.</p>
+                <div class="mt-2 flex justify-center md:justify-end space-x-4">
+                   <a href="#" class="hover:text-yellow-500">Privacy Policy</a>
+                   <span>|</span>
+                   <a href="#" class="hover:text-yellow-500">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Sticky CTA -->
+    <div class="fixed bottom-0 left-0 right-0 p-3 bg-slate-900/95 backdrop-blur-xl border-t border-slate-800 md:hidden z-50">
+        <button onclick="navigateToPayment()" class="w-full bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-extrabold py-3 rounded-lg shadow-[0_0_20px_rgba(234,179,8,0.5)] flex justify-between px-6 items-center animate-pulse">
+            <div class="flex flex-col items-start">
+                <span class="text-[10px] text-red-900 font-black uppercase tracking-widest flex items-center">
+                    <i data-lucide="clock" class="h-3 w-3 mr-1"></i> OFFER ENDS SOON
+                </span>
+                <span class="text-sm font-bold flex items-center">Book Demo <span class="line-through text-black/60 mx-1 text-xs">₹99</span> ₹9/-</span>
+            </div>
+            <span class="flex items-center text-sm bg-black text-white px-3 py-1 rounded-full font-bold">Unlock Now <i data-lucide="arrow-right" class="ml-1 h-3 w-3"></i></span>
+        </button>
+    </div>
+
+    <!-- Page Logic -->
+    <script>
+        // --- 1. Syllabus Logic ---
+        const syllabusData = [
+            {
+                title: "Module 01: Fundamentals & Lab Setup",
+                topics: [
+                    "Cybersecurity & Ethical Hacking Basics",
+                    "Deep Dive: Networks & Internet Architecture",
+                    "Virtual Machines Lab Setup (Kali/Parrot)",
+                    "Windows & Linux Command Line for Hackers",
+                    "TCP/IP & Networking Hands-On Analysis"
+                ]
+            },
+            {
+                title: "Module 02: Web Application Pentesting",
+                topics: [
+                    "How Websites Work & Web Tech (HTML, JS, PHP)",
+                    "Recon & Mapping Strategies",
+                    "Burp Suite Mastery (Beginner to Advanced)",
+                    "SQL Injection (SQLi) & Cross-Site Scripting (XSS)",
+                    "Auth & Session Bugs",
+                    "Advanced Attacks: LFI/RFI/XXE/SSRF"
+                ]
+            },
+            {
+                title: "Module 03: API Pentesting",
+                topics: [
+                    "Understanding Architecture: REST, SOAP, GraphQL",
+                    "Analyzing Endpoints, Tokens, & Parameters",
+                    "Broken Authentication & Authorization",
+                    "WSDL Enumeration & GraphQL Security Testing",
+                    "CORS & CSP Misconfigurations"
+                ]
+            },
+            {
+                title: "Module 04: Bug Hunting & Reporting",
+                topics: [
+                    "OWASP Top 10 Deep Dive",
+                    "Advanced Bug Hunting Methodology",
+                    "Writing Proof of Concepts (PoCs)",
+                    "Professional Pentest Reporting",
+                    "Final Capstone Project & Exam"
+                ]
+            }
+        ];
+
+        function renderSyllabus() {
+            const container = document.getElementById('syllabus-container');
+            let html = '';
+            syllabusData.forEach((module, index) => {
+                const isActive = index === 0; // Default first one open
+                html += `
+                <div class="border border-slate-800 rounded-xl bg-slate-900/50 overflow-hidden syllabus-item" data-index="${index}">
+                    <button class="w-full px-6 py-5 flex justify-between items-center text-left transition-colors syllabus-header hover:bg-slate-800/50 ${isActive ? 'bg-slate-800' : ''}" onclick="toggleSyllabus(${index})">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full flex items-center justify-center mr-4 text-sm font-bold syllabus-number ${isActive ? 'bg-yellow-500 text-black' : 'bg-slate-700 text-gray-300'}">
+                                ${index + 1}
+                            </div>
+                            <span class="text-lg font-bold syllabus-title ${isActive ? 'text-white' : 'text-gray-300'}">
+                                ${module.title}
+                            </span>
+                        </div>
+                        <i data-lucide="${isActive ? 'chevron-up' : 'chevron-down'}" class="h-5 w-5 ${isActive ? 'text-yellow-500' : 'text-gray-500'} icon-chevron"></i>
+                    </button>
+                    
+                    <div class="px-6 py-6 bg-slate-900 border-t border-slate-800 syllabus-content ${isActive ? '' : 'hidden'}">
+                        <ul class="space-y-3">
+                            ${module.topics.map(topic => `
+                                <li class="flex items-start text-gray-400">
+                                    <i data-lucide="check-circle" class="h-5 w-5 text-green-500 mr-3 flex-shrink-0 mt-0.5"></i>
+                                    <span>${topic}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        function toggleSyllabus(index) {
+            const items = document.querySelectorAll('.syllabus-item');
+            items.forEach(item => {
+                const itemIndex = parseInt(item.dataset.index);
+                const header = item.querySelector('.syllabus-header');
+                const content = item.querySelector('.syllabus-content');
+                const number = item.querySelector('.syllabus-number');
+                const title = item.querySelector('.syllabus-title');
+                const icon = item.querySelector('.icon-chevron');
+
+                if (itemIndex === index && content.classList.contains('hidden')) {
+                    // Open
+                    header.classList.add('bg-slate-800');
+                    content.classList.remove('hidden');
+                    number.classList.remove('bg-slate-700', 'text-gray-300');
+                    number.classList.add('bg-yellow-500', 'text-black');
+                    title.classList.remove('text-gray-300');
+                    title.classList.add('text-white');
+                    
+                    // Manually replace icon attributes since lucide.createIcons replaces the <i> tag with <svg>
+                    // We need to re-render or just let lucide handle it again? 
+                    // Simpler: Just toggle visibility if we assume only one open.
+                    // Actually, Lucide replaces <i data-lucide> with <svg>. So we can't just change attribute easily without re-running.
+                    // Trick: We will re-render the whole list to keep it simple, or manipulate classes. 
+                    // Let's re-render for simplicity as state changes.
+                } else {
+                    // Close
+                    header.classList.remove('bg-slate-800');
+                    content.classList.add('hidden');
+                    number.classList.remove('bg-yellow-500', 'text-black');
+                    number.classList.add('bg-slate-700', 'text-gray-300');
+                    title.classList.remove('text-white');
+                    title.classList.add('text-gray-300');
+                }
+            });
+            // Re-render approach is cleaner for icons
+            renderSyllabusWithState(index);
+        }
+
+        function renderSyllabusWithState(activeIndex) {
+            const container = document.getElementById('syllabus-container');
+            let html = '';
+            syllabusData.forEach((module, index) => {
+                // Logic: If clicked activeIndex is same as current open, we might want to toggle close. 
+                // But the React code logic: setActiveModule(activeModule === index ? -1 : index)
+                // We need to store state globally.
+                const isActive = index === activeIndex;
+                
+                html += `
+                <div class="border border-slate-800 rounded-xl bg-slate-900/50 overflow-hidden">
+                    <button class="w-full px-6 py-5 flex justify-between items-center text-left transition-colors hover:bg-slate-800/50 ${isActive ? 'bg-slate-800' : ''}" onclick="updateSyllabusState(${index})">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full flex items-center justify-center mr-4 text-sm font-bold ${isActive ? 'bg-yellow-500 text-black' : 'bg-slate-700 text-gray-300'}">
+                                ${index + 1}
+                            </div>
+                            <span class="text-lg font-bold ${isActive ? 'text-white' : 'text-gray-300'}">
+                                ${module.title}
+                            </span>
+                        </div>
+                        <i data-lucide="${isActive ? 'chevron-up' : 'chevron-down'}" class="h-5 w-5 ${isActive ? 'text-yellow-500' : 'text-gray-500'}"></i>
+                    </button>
+                    
+                    <div class="px-6 py-6 bg-slate-900 border-t border-slate-800 ${isActive ? '' : 'hidden'}">
+                        <ul class="space-y-3">
+                            ${module.topics.map(topic => `
+                                <li class="flex items-start text-gray-400">
+                                    <i data-lucide="check-circle" class="h-5 w-5 text-green-500 mr-3 flex-shrink-0 mt-0.5"></i>
+                                    <span>${topic}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                </div>
+                `;
+            });
+            container.innerHTML = html;
+            lucide.createIcons();
+        }
+        
+        let currentSyllabusIndex = 0; // Initial state
+        function updateSyllabusState(index) {
+            currentSyllabusIndex = (currentSyllabusIndex === index) ? -1 : index;
+            renderSyllabusWithState(currentSyllabusIndex);
+        }
+
+
+        // --- 2. FAQ Logic ---
+        const faqs = [
+            {
+                q: "I am from a non-IT background. Can I join?",
+                a: "Absolutely! 60% of our students are career switchers. We start from the very basics (Networks & Linux) before moving to advanced Hacking."
+            },
+            {
+                q: "Do I really need a laptop?",
+                a: "Yes. Cybersecurity is a hands-on field. You cannot perform practical attacks or use tools like Burp Suite on a mobile phone."
+            },
+            {
+                q: "Do you provide placement support?",
+                a: "Yes. We offer dedicated career assistance including professional resume building, LinkedIn profile optimization, and mock interview sessions to prepare you for job applications."
+            },
+            {
+                q: "Is the ₹9 demo live or recorded?",
+                a: "It is a 100% LIVE interactive session on Zoom. You can ask questions directly to the instructor."
+            }
+        ];
+
+        let currentFaqIndex = 0;
+
+        function renderFAQs() {
+            const container = document.getElementById('faq-container');
+            let html = '';
+            faqs.forEach((faq, index) => {
+                const isActive = index === currentFaqIndex;
+                html += `
+                <div class="bg-slate-900 border border-slate-800 rounded-lg overflow-hidden">
+                    <button 
+                        onclick="updateFaqState(${index})"
+                        class="w-full px-4 md:px-6 py-4 text-left flex justify-between items-center focus:outline-none"
+                    >
+                        <span class="font-bold text-white text-sm md:text-base pr-4">${faq.q}</span>
+                        <i data-lucide="${isActive ? 'chevron-up' : 'chevron-down'}" class="${isActive ? 'text-yellow-500' : 'text-gray-500'} flex-shrink-0"></i>
+                    </button>
+                    <div class="px-4 md:px-6 pb-4 text-gray-400 text-sm md:text-base animate-fade-in leading-relaxed ${isActive ? '' : 'hidden'}">
+                        ${faq.a}
+                    </div>
+                </div>
+                `;
+            });
+            container.innerHTML = html;
+            lucide.createIcons();
+        }
+
+        function updateFaqState(index) {
+            currentFaqIndex = (currentFaqIndex === index) ? -1 : index;
+            renderFAQs();
+        }
+
+
+        // --- 3. Video Logic ---
+        const testimonials = [
+            {
+                name: "Siby",
+                role: "Batch 2 Graduate",
+                quote: "Knowing absolutely nothing about hacking, I was tense. But within 2 days, I realized how simple the teaching is. The instructors clear doubts as many times as you ask!",
+                video: "vILn-_i2n5U",
+                initial: "S",
+                color: "bg-green-600"
+            },
+            {
+                name: "Shahel",
+                role: "Cyber Security Student",
+                quote: "My first entry into this field. The recorded sessions and group support were a lifesaver for clearing doubts. The modules are so easy to understand.",
+                video: "mcGd31D19Xo",
+                initial: "S",
+                color: "bg-blue-600"
+            },
+            {
+                name: "Habib Rahman",
+                role: "Digital Marketer (Saudi)",
+                quote: "I work in Digital Marketing in Saudi. I learned how to protect myself and my family using just a mobile phone. Thank you Qnayds!",
+                video: "U-9r2GyKZ0s",
+                initial: "H",
+                color: "bg-purple-600"
+            }
+        ];
+
+        function renderVideos() {
+            const container = document.getElementById('video-grid');
+            let html = '';
+            testimonials.forEach((student, index) => {
+                const extraIcon = student.initial === 'H' ? '<i data-lucide="smartphone" class="h-4 w-4 text-slate-500"></i>' : '';
+                
+                html += `
+                <div class="bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden shadow-xl hover:border-yellow-500/30 transition-all duration-300 flex flex-col h-full">
+                    <!-- Video Container -->
+                    <div 
+                        class="relative aspect-[9/16] w-full bg-black group cursor-pointer video-wrapper"
+                        data-video="${student.video}"
+                        id="video-wrapper-${index}"
+                        onclick="playVideo(${index}, '${student.video}')"
+                    >
+                        <!-- Thumbnail -->
+                        <img 
+                            src="https://i.ytimg.com/vi/${student.video}/hqdefault.jpg" 
+                            alt="${student.name} Testimonial" 
+                            class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity"
+                            onerror="this.src='https://via.placeholder.com/480x360/000000/FFFFFF?text=Video+Thumbnail'"
+                        />
+                        <!-- Play Button Overlay -->
+                        <div class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/10 transition-colors">
+                            <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center shadow-2xl scale-100 group-hover:scale-110 transition-transform">
+                                <i data-lucide="play" class="h-8 w-8 text-white fill-current ml-1"></i>
+                            </div>
+                        </div>
+                        <!-- CTA Overlay -->
+                        <div class="absolute bottom-4 left-0 right-0 text-center">
+                           <span class="bg-black/60 text-white text-xs font-bold px-3 py-1.5 rounded-full backdrop-blur-sm border border-white/20">
+                             Watch Success Story
+                           </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 ${student.color} rounded-full flex items-center justify-center text-white font-bold text-lg mr-3 shadow-md">
+                                ${student.initial}
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold leading-tight">${student.name}</h4>
+                                <p class="text-xs text-gray-400">${student.role}</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                           <div class="flex text-yellow-400 text-xs mb-2">
+                              <i data-lucide="star" class="h-3 w-3 fill-current"></i><i data-lucide="star" class="h-3 w-3 fill-current"></i><i data-lucide="star" class="h-3 w-3 fill-current"></i><i data-lucide="star" class="h-3 w-3 fill-current"></i><i data-lucide="star" class="h-3 w-3 fill-current"></i>
+                           </div>
+                           <p class="text-gray-300 text-sm italic leading-relaxed">"${student.quote}"</p>
+                        </div>
+
+                        <div class="mt-auto pt-4 border-t border-slate-800 flex items-center justify-between">
+                           <span class="text-xs font-bold text-green-400 flex items-center">
+                             <i data-lucide="check-circle" class="h-3 w-3 mr-1"></i> Verified Student
+                           </span>
+                           ${extraIcon}
+                        </div>
+                    </div>
+                </div>
+                `;
+            });
+            container.innerHTML = html;
+            lucide.createIcons();
+        }
+
+        function playVideo(index, videoId) {
+            const wrapper = document.getElementById(`video-wrapper-${index}`);
+            wrapper.innerHTML = `
+                <iframe 
+                    class="w-full h-full"
+                    src="https://www.youtube.com/embed/${videoId}?autoplay=1&mute=0&playsinline=1&rel=0" 
+                    title="Testimonial"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowFullScreen
+                ></iframe>
+            `;
+            // Remove click handler to prevent reload
+            wrapper.onclick = null;
+        }
+
+
+        // --- 4. Countdown Logic ---
+        function startCountdown() {
+            let mins = 14;
+            let secs = 59;
+            
+            const minsEl = document.getElementById('timer-mins');
+            const secsEl = document.getElementById('timer-secs');
+
+            setInterval(() => {
+                if (secs === 0) {
+                    if (mins === 0) {
+                        // Reset loop or stop? React code loops back to 14:59 if mins=0,secs=0 is reached?
+                        // React code: if prev.seconds === 0 { if (prev.minutes === 0) return prev; ... }
+                        // It stops at 00:00.
+                        return;
+                    } else {
+                        mins--;
+                        secs = 59;
+                    }
+                } else {
+                    secs--;
+                }
+
+                minsEl.textContent = String(mins).padStart(2, '0');
+                secsEl.textContent = String(secs).padStart(2, '0');
+            }, 1000);
+        }
+
+        // --- Initialization ---
+        document.addEventListener('DOMContentLoaded', () => {
+            renderSyllabusWithState(0);
+            renderFAQs();
+            renderVideos();
+            startCountdown();
+            lucide.createIcons();
+        });
+
+    </script>
+</body>
+</html>
